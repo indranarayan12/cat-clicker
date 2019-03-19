@@ -1,0 +1,2 @@
+CLOUSURES
+    the function in the .addEventListener() can be a function returning a function so that it is implemented as IFFE(immediate-invoked function expression) to store the current value for execution of the specified event
