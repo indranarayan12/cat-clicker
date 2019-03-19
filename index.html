@@ -7,19 +7,85 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="cat-img">
-        <img src="img/unnamed.jpg" alt="Cats may not rule the world but definetly rule the web" id="c" >
-        <p>0</p>
-    </div>
+    <span id="cat-img" style="width: content-width;">
+        <p >Cat image 1</p>
+        <p >Cat image 2</p>
+        <p >Cat image 3</p>
+        <p >Cat image 4</p>
+        <p >Cat image 5</p>
+        <p >Cat image 6</p>
+        <p >Cat image 7</p>
+    </span>
+        
+    <div></div>
     <script>
-        const catImg = document.querySelector('img');
+        
+        var spanTag = document.querySelector('#cat-img');
+
+        spanTag.addEventListener('click', function(event){
+            if(event.target.nodeName === 'P'){
+                var myDiv = document.querySelector('div');
+                while (myDiv.firstChild){
+                    myDiv.removeChild(myDiv.firstChild);
+                }
+                var content = event.target.innerHTML;
+                
+                var newImg = document.createElement('img');
+                
+                var imgUrl = 'img/cat' + Number(content[10]) + '.jpg';
+                
+                //console.log(imgUrl);
+                
+                newImg.setAttribute('src', imgUrl);
+
+                newImg.setAttribute('id', 'new-cat');
+                
+                var nam = document.createElement('h1');
+                nam.textContent = 'Cat image ' + Number(content[10]);
+                
+                var cnt = document.createElement('p');
+                cnt.textContent = 0;
+
+                cnt.setAttribute('id', 'para')
+
+                myDiv.appendChild(newImg);
+                myDiv.appendChild(nam);
+                myDiv.appendChild(cnt);
+
+            }
+
+        });
+
+
+
+
+
+
+
+        document.addEventListener('click',function(evnt){
+            if(evnt.target.nodeName === 'IMG'){
+                const catImg = document.querySelector('img');
+                //console.log(catImg);
+                
+                const pTag = document.querySelector('p#para');
+                //console.log(pTag);
+                
+                var x = Number(pTag.textContent);
+                //console.log(x);
+                
+                pTag.textContent = (x+1).toString();
+            }
+        });
+        
+        /*
+        const catImg2 = document.querySelector('#cat2');
         console.log('got it');
-        catImg.addEventListener('click',function(){
-        const pTag = document.querySelector('p');
+        catImg2.addEventListener('click',function(){
+        const pTag = document.querySelector('#p2');
         var x = Number(pTag.textContent);
         console.log(x);
         pTag.textContent = (x+1).toString();
-        });
+        });*/
 
     </script>
 </body>
